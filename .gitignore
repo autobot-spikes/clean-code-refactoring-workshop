@@ -1,0 +1,7 @@
+**/target
+**/build
+**/*.iml
+**/*.eclipse
+**/.idea
+**/.gradle
+**/.settings

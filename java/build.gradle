@@ -1,0 +1,15 @@
+plugins {
+    id 'java-library'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation('junit:junit:4.12')
+}
+
+group = 'com.refactoring'
+version = '0.1'
+sourceCompatibility = '1.8'
