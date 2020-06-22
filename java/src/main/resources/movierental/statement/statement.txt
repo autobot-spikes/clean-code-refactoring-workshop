@@ -1,0 +1,6 @@
+Rental Record for {{ customer.name }}
+{% for rental in customer.rentals -%}
+{{}}	{{ rental.movie.title }}	{{ rental.amount }}
+{% endfor -%}
+Amount owed is {{ customer.totalAmount }}
+You earned {{ customer.frequentRenterPoints }} frequent renter points

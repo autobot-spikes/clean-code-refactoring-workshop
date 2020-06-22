@@ -4,9 +4,15 @@ plugins {
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
+    compileOnly('org.projectlombok:lombok:1.18.12')
+    annotationProcessor('org.projectlombok:lombok:1.18.12')
+
+    implementation('com.hubspot.jinjava:jinjava:2.5.4')
+
     testImplementation('junit:junit:4.12')
 }
 
