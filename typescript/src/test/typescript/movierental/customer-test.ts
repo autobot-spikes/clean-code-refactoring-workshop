@@ -1,5 +1,5 @@
 import {Customer} from "../../../main/typescript/movierental/customer";
-import {Movie} from "../../../main/typescript/movierental/movie";
+import {ChildrenMovie, NewReleaseMovie, RegularMovie} from "../../../main/typescript/movierental/movie";
 import {Rental} from "../../../main/typescript/movierental/rental";
 import {CustomerBuilder} from "./customer-builder";
 
@@ -11,7 +11,7 @@ describe("Customer", () => {
 
     it("testAddRental", () => {
         const customer2 = new CustomerBuilder().withName("Julia").build();
-        const movie1 = new Movie("Gone with the Wind", Movie.REGULAR);
+        const movie1 = new RegularMovie("Gone with the Wind");
         const rental1 = new Rental(movie1, 3); // 3 day rental
         customer2.addRental(rental1);
     });
@@ -22,7 +22,7 @@ describe("Customer", () => {
     });
 
     it("statementForRegularMovie", () => {
-        const movie1 = new Movie("Gone with the Wind", Movie.REGULAR);
+        const movie1 = new RegularMovie("Gone with the Wind");
         const rental1 = new Rental(movie1, 3); // 3 day rental
         const customer2 =
             new CustomerBuilder()
@@ -39,7 +39,7 @@ describe("Customer", () => {
 
     it("statementForNewReleaseMovie", () => {
 
-        const movie1 = new Movie("Star Wars", Movie.NEW_RELEASE);
+        const movie1 = new NewReleaseMovie("Star Wars");
         const rental1 = new Rental(movie1, 3); // 3 day rental
         const customer2 =
             new CustomerBuilder()
@@ -56,7 +56,7 @@ describe("Customer", () => {
 
     it("statementForChildrensMovie", () => {
 
-        const movie1 = new Movie("Madagascar", Movie.CHILDRENS);
+        const movie1 = new ChildrenMovie("Madagascar");
         const rental1 = new Rental(movie1, 3); // 3 day rental
         const customer2
             = new CustomerBuilder()
@@ -72,11 +72,11 @@ describe("Customer", () => {
     });
 
     it("statementForManyMovies", () => {
-        const movie1 = new Movie("Madagascar", Movie.CHILDRENS);
+        const movie1 = new ChildrenMovie("Madagascar");
         const rental1 = new Rental(movie1, 6); // 6 day rental
-        const movie2 = new Movie("Star Wars", Movie.NEW_RELEASE);
+        const movie2 = new NewReleaseMovie("Star Wars");
         const rental2 = new Rental(movie2, 2); // 2 day rental
-        const movie3 = new Movie("Gone with the Wind", Movie.REGULAR);
+        const movie3 = new RegularMovie("Gone with the Wind");
         const rental3 = new Rental(movie3, 8); // 8 day rental
         const customer1 = new CustomerBuilder()
             .withName("David")

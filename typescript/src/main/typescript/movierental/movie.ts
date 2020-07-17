@@ -1,27 +1,42 @@
-export class Movie {
-
-    public static CHILDRENS = 2;
-    public static NEW_RELEASE = 1;
-    public static REGULAR = 0;
-
+export abstract class Movie {
     private title: string;
-    private priceCode: number;
 
-    public constructor(title: string, priceCode: number) {
+    public constructor(title: string) {
         this.title = title;
-        this.priceCode = priceCode;
-    }
-
-    public getPriceCode(): number {
-        return this.priceCode;
-    }
-
-    public setPriceCode(arg: number) {
-        this.priceCode = arg;
     }
 
     public getTitle(): string {
         return this.title;
     }
 
+    public abstract calculateRentalPrice(dayRented: number);
+}
+
+// tslint:disable-next-line:max-classes-per-file
+export class RegularMovie extends Movie {
+    public constructor(title: string) {
+        super(title);
+    }
+    public calculateRentalPrice(dayRented: number) {
+        return dayRented > 2 ? ((dayRented - 2) * 1.5) + 2 : 2;
+    }
+}
+// tslint:disable-next-line:max-classes-per-file
+export class NewReleaseMovie extends Movie {
+    public constructor(title: string) {
+        super(title);
+    }
+    public calculateRentalPrice(dayRented: number) {
+        return dayRented * 3;
+    }
+}
+
+// tslint:disable-next-line:max-classes-per-file
+export class ChildrenMovie extends Movie {
+    public constructor(title: string) {
+        super(title);
+    }
+    public calculateRentalPrice(dayRented: number) {
+        return dayRented > 3 ? ((dayRented - 3) * 1.5) + 1.5 : 1.5;
+    }
 }
